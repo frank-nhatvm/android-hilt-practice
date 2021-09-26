@@ -2,8 +2,9 @@ package com.frank.practicehilt.data.services
 
 import com.frank.practicehilt.data.apis.QuestionAPI
 import com.frank.practicehilt.data.entities.QuestionList
+import javax.inject.Inject
 
-class QuestionRemoteService constructor(private val questionAPI: QuestionAPI) {
+class QuestionRemoteService @Inject constructor(private val questionAPI: QuestionAPI) {
 
     suspend fun getListQuestion(currentPage: Int, pageSize: Int): QuestionList?{
 

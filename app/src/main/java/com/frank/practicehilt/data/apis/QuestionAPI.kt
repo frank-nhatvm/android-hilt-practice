@@ -12,7 +12,7 @@ interface QuestionAPI {
      *  example: https://api.stackexchange.com/2.2/questions?page=1&site=stackoverflow&pagesize=1
      */
     @GET("/questions")
-    fun getListQuestions(
+    suspend fun getListQuestions(
         @HeaderMap headers: Map<String, String> = mapOf(),
         @QueryMap parameters: Map<String, String> = mapOf()
     ): Response<QuestionList>
