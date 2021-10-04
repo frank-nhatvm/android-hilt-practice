@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.frank.practicehilt.databinding.FragmentStackOverFlowBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class StackOverFlowFragment : Fragment() {
 
     private val viewModel by viewModels<StackOverFlowViewModel>()

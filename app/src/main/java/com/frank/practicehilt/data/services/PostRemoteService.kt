@@ -2,8 +2,9 @@ package com.frank.practicehilt.data.services
 
 import com.frank.practicehilt.data.apis.PostAPI
 import com.frank.practicehilt.data.entities.Post
+import javax.inject.Inject
 
-class PostRemoteService constructor(private  val postAPI: PostAPI) {
+class PostRemoteService @Inject constructor(private  val postAPI: PostAPI) {
 
     suspend fun getPosts(): List<Post>? {
 
