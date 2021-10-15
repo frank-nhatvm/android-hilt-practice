@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "tags": [
+        "git",
+        "github"
+      ],
+      "owner": {
+        "reputation": 17,
+        "user_id": 14429659,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/7cc60e5e060a2a9f3fac469e2bf8e6f4?s=256&d=identicon&r=PG&f=1",
+        "display_name": "Sky",
+        "link": "https://stackoverflow.com/users/14429659/sky"
+      },
+      "is_answered": false,
+      "view_count": 16,
+      "answer_count": 1,
+      "score": 0,
+      "last_activity_date": 1634286645,
+      "creation_date": 1634262130,
+      "last_edit_date": 1634286645,
+      "question_id": 69579067,
+      "content_license": "CC BY-SA 4.0",
+      "link": "https://stackoverflow.com/questions/69579067/how-to-pull-the-branch-of-remote-repo-to-cover-the-changes-in-the-local-repo",
+      "title": "How to pull the branch of remote repo to cover the changes in the local repo"
+    }
+  ],
+  "has_more": false,
+  "quota_max": 300,
+  "quota_remaining": 299
+}
