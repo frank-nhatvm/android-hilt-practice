@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.frank.practicehilt.databinding.FragmentStackOverFlowBinding
@@ -12,13 +13,15 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class StackOverFlowFragment : Fragment() {
 
-    private val viewModel by viewModels<StackOverFlowViewModel>()
+
+    private val stackOverflowViewModel by viewModels<StackOverFlowViewModel>()
+
     private lateinit var dataBinding: FragmentStackOverFlowBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.fetchData()
+        stackOverflowViewModel.fetchData()
     }
 
 
@@ -29,11 +32,10 @@ class StackOverFlowFragment : Fragment() {
     ): View {
         dataBinding = FragmentStackOverFlowBinding.inflate(inflater)
         dataBinding.lifecycleOwner = viewLifecycleOwner
-        dataBinding.viewModel = viewModel
+        dataBinding.viewModel = stackOverflowViewModel
 
 
-        viewModel.listQuestions.observe(viewLifecycleOwner,{
-            list ->
+        stackOverflowViewModel.listQuestions.observe(viewLifecycleOwner, { list ->
             list.firstOrNull()?.let { question ->
                 dataBinding.tvResult.text = question.toString()
             }
@@ -42,9 +44,6 @@ class StackOverFlowFragment : Fragment() {
 
         return dataBinding.root
     }
-
-
-
 
 
 }

@@ -1,5 +1,6 @@
 package com.frank.practicehilt.ui.stackoverflow
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +12,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class StackOverFlowViewModel @Inject constructor(private val questionRepository: QuestionRepository) : BaseViewModel() {
+class StackOverFlowViewModel @Inject constructor(private val questionRepository: QuestionRepository) :
+    BaseViewModel() {
 
     var listQuestions = MutableLiveData<List<Question>>()
         private set
@@ -20,7 +22,7 @@ class StackOverFlowViewModel @Inject constructor(private val questionRepository:
         parentJob = viewModelScope.launch(exceptionHandler) {
             isLoading.postValue(true)
             val questions = questionRepository.getListQuestion()
-            if(questions.isNotEmpty()){
+            if (questions.isNotEmpty()) {
                 listQuestions.postValue(questions)
             }
         }
@@ -31,8 +33,8 @@ class StackOverFlowViewModel @Inject constructor(private val questionRepository:
     fun refresh() {
         parentJob = viewModelScope.launch(exceptionHandler) {
             isLoading.postValue(true)
-            val questions  = questionRepository.getNewAndSave()
-            if(questions.isNotEmpty()){
+            val questions = questionRepository.getNewAndSave()
+            if (questions.isNotEmpty()) {
                 listQuestions.postValue(questions)
             }
         }

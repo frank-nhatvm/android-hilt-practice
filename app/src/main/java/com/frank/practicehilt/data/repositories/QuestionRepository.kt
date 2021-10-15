@@ -12,23 +12,23 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class QuestionRepository @Inject constructor(
+open class QuestionRepository @Inject constructor(
     private val questionRemoteService: QuestionRemoteService,
     private val localService: QuestionLocalService,
-    @IoDispatcher private val dispatcher: CoroutineDispatcher
+    @IoDispatcher private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
 
-    suspend fun getListQuestion(): List<Question> = withContext(dispatcher) {
+    suspend fun getListQuestion(): List<Question> {
+      return  withContext(dispatcher) {
+            val savedQuestion = localService.getAllQuestion()
 
-        val savedQuestion = localService.getAllQuestion()
-
-        if (savedQuestion.isNotEmpty()) {
-            savedQuestion.toListQuestions()
-        } else {
-            getNewAndSave()
+            if (savedQuestion.isNotEmpty()) {
+               savedQuestion.toListQuestions()
+            } else {
+                 getNewAndSave()
+            }
         }
-
     }
 
      suspend fun getNewAndSave(): List<Question> {
